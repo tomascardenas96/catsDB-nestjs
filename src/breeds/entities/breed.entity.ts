@@ -1,5 +1,5 @@
 import { Cat } from "src/cats/entities/cat.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Breed {
@@ -9,6 +9,6 @@ export class Breed {
     @Column()
     name: string;
 
-    @ManyToOne(() => Cat, (cat) => cat.id)
-    cats: Cat[];
+    @OneToMany(() => Cat, (cat) => cat.breed)
+    cat: Cat[];
 }

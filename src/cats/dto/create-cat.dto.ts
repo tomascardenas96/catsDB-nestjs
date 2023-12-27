@@ -12,6 +12,6 @@ export class CreateCatDto {
     age: number;
 
     @IsString()
-    @IsOptional()
+    @IsNotEmpty()
     breed: string;
 }

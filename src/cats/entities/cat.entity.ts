@@ -1,5 +1,5 @@
 import { Breed } from 'src/breeds/entities/breed.entity';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Cat {
@@ -12,8 +12,6 @@ export class Cat {
   @Column()
   age: number;
 
-  @OneToMany(() => Breed, (breed) => breed.id, {
-    eager: true
-  })
+  @ManyToOne(() => Breed, (breed) => breed.cat, { onDelete: 'CASCADE' })
   breed: Breed;
 }

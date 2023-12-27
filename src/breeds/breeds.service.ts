@@ -17,8 +17,12 @@ export class BreedsService {
   ) {}
 
   async create(breed: CreateBreedDto) {
-    const newBreed: Breed = this.breedRepository.create(breed);
-    return this.breedRepository.save(newBreed);
+    try {
+      const newBreed: Breed = this.breedRepository.create(breed);
+      return this.breedRepository.save(newBreed);
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 
   async findAll() {
@@ -38,13 +42,15 @@ export class BreedsService {
   }
 
   async update(id: number, updateBreedDto: UpdateBreedDto) {
-    const foundBreed = await this.breedRepository.findOneBy({id});
-    if(!foundBreed) throw new NotFoundException('Breed not found');
+    const foundBreed = await this.breedRepository.findOneBy({ id });
+    if (!foundBreed) throw new NotFoundException('Breed not found');
 
     return this.breedRepository.update(id, updateBreedDto);
   }
 
   async remove(id: number) {
-    return `This action removes a #${id} breed`;
+    const foundBreed = await this.findOne(id);
+    if (!foundBreed) throw new NotFoundException('Breed not found');
+    return this.breedRepository.delete(foundBreed);
   }
 }

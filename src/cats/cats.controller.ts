@@ -8,8 +8,8 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  create(@Body() createCatDto: CreateCatDto) {
-    return this.catsService.create(createCatDto);
+  create(@Body() cat: CreateCatDto) {
+    return this.catsService.create(cat);
   }
 
   @Get()
@@ -23,8 +23,8 @@ export class CatsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return this.catsService.update(+id, updateCatDto);
+  update(@Param('id') id: string, @Body() updateCat: UpdateCatDto) {
+    return this.catsService.update(+id, updateCat);
   }
 
   @Delete(':id')

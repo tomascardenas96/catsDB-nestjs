@@ -1,26 +1,50 @@
-import { Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Breed } from './entities/breed.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BreedsService {
-  create(createBreedDto: CreateBreedDto) {
-    return 'This action adds a new breed';
+  constructor(
+    @InjectRepository(Breed)
+    private readonly breedRepository: Repository<Breed>,
+  ) {}
+
+  async create(breed: CreateBreedDto) {
+    const newBreed: Breed = this.breedRepository.create(breed);
+    return this.breedRepository.save(newBreed);
   }
 
-  findAll() {
-    return `This action returns all breeds`;
+  async findAll() {
+    try {
+      return this.breedRepository.find();
+    } catch (error) {
+      throw new BadRequestException(error);
+    }
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} breed`;
+  async findOne(id: number) {
+    const foundBreed = await this.breedRepository.findOneBy({ id });
+    if (!foundBreed) {
+      throw new NotFoundException('Breed not found');
+    }
+    return foundBreed;
   }
 
-  update(id: number, updateBreedDto: UpdateBreedDto) {
-    return `This action updates a #${id} breed`;
+  async update(id: number, updateBreedDto: UpdateBreedDto) {
+    const foundBreed = await this.breedRepository.findOneBy({id});
+    if(!foundBreed) throw new NotFoundException('Breed not found');
+
+    return this.breedRepository.update(id, updateBreedDto);
   }
 
-  remove(id: number) {
+  async remove(id: number) {
     return `This action removes a #${id} breed`;
   }
 }

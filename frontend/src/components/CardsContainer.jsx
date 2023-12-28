@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { catsData } from "../api/cats";
 import Card from "./Card";
+import "./styles/Card.css";
 
 const CardsContainer = () => {
   const [cats, setCats] = useState([]);
@@ -16,9 +17,13 @@ const CardsContainer = () => {
 
   return (
     <>
-      {cats.map((cat) => (
-        <Card key={cat.id} cat={cat} />
-      ))}
+      <main className="home-page">
+        <div className="cards__container">
+          {cats.map((cat) => (
+            <Card key={cat.id} cat={cat} />
+          ))}
+        </div>
+      </main>
     </>
   );
 };

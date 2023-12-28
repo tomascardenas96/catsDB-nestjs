@@ -1,0 +1,28 @@
+.home-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cards__container {
+    margin-top: 2rem;
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: start;
+    gap: 2rem;
+    border-left: 1px solid rgba(128, 128, 128, 0.269);
+    border-right: 1px solid rgba(128, 128, 128, 0.269);
+    min-height: 90vh;
+    padding: 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 26rem;
+    border: 1px solid black;
+    align-items: center;
+    padding: 2rem 0;
+    border-radius: .2rem;
+}

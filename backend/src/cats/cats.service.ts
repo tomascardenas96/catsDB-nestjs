@@ -22,6 +22,7 @@ export class CatsService {
     const foundBreed = await this.breedRepository.findOne({
       where: { name: breed },
     });
+    if(!foundBreed) throw new NotFoundException('Breed not found');
     return foundBreed;
   }
 

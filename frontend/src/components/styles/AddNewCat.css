@@ -66,3 +66,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.select-breed {
+    color: rgba(0, 0, 0, 0.723);
+}

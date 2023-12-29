@@ -46,7 +46,7 @@ const AddNewCat = () => {
       {isModalOpen && (
         <div className="add-new-cat__modal">
           <form onSubmit={handleSubmit}>
-          <p onClick={closeModal}>x</p>
+            <p onClick={closeModal}>x</p>
             <label htmlFor="name">
               Nombre
               <input
@@ -75,8 +75,9 @@ const AddNewCat = () => {
                 value={newCat.breed}
                 onChange={handleChange}
               >
-                <option value="persa">Persa</option>
+                <option className="select-breed">Selecciona una raza...</option>
                 <option value="punk">Punk</option>
+                <option value="persa">Persa</option>
                 <option value="aleman">Aleman</option>
               </select>
             </label>

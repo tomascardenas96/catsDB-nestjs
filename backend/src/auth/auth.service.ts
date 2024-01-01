@@ -49,7 +49,12 @@ export class AuthService {
 
     const payload = { email : user.email};
 
-    const token = await this.jwtService.signAsync(payload);
+    const secretKey = process.env.JWT_SECRET
+    if(!secretKey) {
+      throw new UnauthorizedException('Environment variable is not defined');
+    }
+
+    const token = await this.jwtService.signAsync(payload, { secret: secretKey });
 
     return {
         token,

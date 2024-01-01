@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@nestjs/jwt": "^10.2.0",
-    "bcryptjs": "^2.4.3"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.6"
-  }
-}

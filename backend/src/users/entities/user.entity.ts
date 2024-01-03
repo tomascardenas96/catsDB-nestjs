@@ -18,5 +18,5 @@ export class User {
   isLoggedIn: boolean;
 
   @Column({ default: 'user' })
-  rol: string;
+  role: string;
 }

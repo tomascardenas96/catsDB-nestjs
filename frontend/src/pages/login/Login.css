@@ -1,61 +1,93 @@
 /* Estilos para el formulario */
 .form-container {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4d02505f;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(45deg, white,#4d02505f );
+  gap: 0.3rem;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    width: 100%;
-    min-height: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    justify-content: space-around;
-    background-color: rgb(255, 255, 255);
-  }
-  
-  /* Estilos para las etiquetas */
-  label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    width: 100%;
-    color: rgba(0, 0, 0, 0.685);
-    font-size: .8rem;
-  }
-  
-  /* Estilos para los campos de entrada */
-  input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  /* Estilos para el botón de enviar */
-  input[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    background-color: #645986;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Efecto de cambio de color al pasar el ratón sobre el botón */
-  input[type="submit"]:hover {
-    background-color: #58BC82;
-  }
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  width: 100%;
+  min-height: 400px;
+  padding: 3rem 1.25rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: space-around;
+  background-color: rgb(255, 255, 255);
+}
+
+/* Estilos para las etiquetas */
+.form-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.685);
+  font-size: 0.8rem;
+}
+
+/* Estilos para los campos de entrada */
+.form-container input {
+  width: 100%;
+  padding: 8px .9rem;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-height: 2.5rem;
+  color: #645986;
+}
+
+/* Estilos para el botón de enviar */
+.form-container input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #645986;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efecto de cambio de color al pasar el ratón sobre el botón */
+.form-container input[type="submit"]:hover {
+  background-color: #58bc82;
+}
+
+.login-error__modal {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 2rem 0;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.685);
+}
+
+.login-error__modal-warning {
+  font-size: 4rem;
+  color: red;
+}
+
+.login-error__modal h1 {
+  font-size: 1rem;
+}
+
+.login-error__modal h2 {
+  font-size: .8rem;
+}
+

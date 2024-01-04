@@ -1,42 +1,43 @@
 import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Profile = () => {
+function Profile() {
   const [user, setUser] = useState(null);
+  const [reload, setReload] = useState(false);
+  const token = localStorage.getItem("token");
+  const isAuthorized = token === null;
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      // Realiza la solicitud al backend para obtener los datos del perfil
-      fetch("http://localhost:3010/api/v1/profile", {
+    try {
+      fetch("http://localhost:3010/api/v1/auth/profile", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
         },
       })
         .then((response) => response.json())
-        .then((data) => {
-          setUser(data);
-        })
-        .catch((error) => {
-          console.error("Error al obtener el perfil:", error);
-          // Manejar los errores de la solicitud
-        });
-    }
-  }, []); // Se ejecuta solo una vez al montar el componente
+        .then((data) => setUser(data));
+    } catch (error) {}
+  }, []);
 
-  if (!user) {
-    return <div>Cargando...</div>;
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("email");
+    setReload(!reload);
+  };
+
+  if (isAuthorized) {
+    return <Navigate to="/" />;
   }
-
+console.log(user)
   return (
-    <div>
-      <h1>Perfil de Usuario</h1>
-      <p>Email: {user.email}</p>
-      {/* Otros detalles del perfil */}
-    </div>
+    <>
+        <div>
+          <div>Profile Page</div>
+          <input type="button" value="Cerrar sesion" onClick={handleLogOut} />
+        </div>
+    </>
   );
-};
+}
 
 export default Profile;
